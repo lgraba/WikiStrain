@@ -24,10 +24,11 @@
 						- else
 							%li= link_to "Sign Up!", new_user_registration_path
 							%li= link_to "Sign In", new_user_session_path
-
-		%p.notice= notice
-		%p.alert= alert
-
+		.container.notices
+			.row
+				.col-md-12
+					- flash.each do |name, msg|
+						= content_tag :div, msg, class: "alert alert-info"
 		.container
 			.row
 				.col-md-2
