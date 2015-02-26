@@ -1,7 +1,12 @@
-%h1= @article.title
-%p= @article.content
-%p= @article.category.name
+.row
+	.col-md-9.col-sm-9
+		%h1= @article.title
+	.col-md-3.col-sm-3
+		%h1
+			.btn-group.pull-right{ role: "group" }
+				= link_to "Edit", edit_article_path(@article), class: "btn btn-default"
+				= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
 
-= link_to "Back", root_path
-= link_to "Edit", edit_article_path(@article)
-= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }
+%p= @article.content
+%p
+	%b= @article.category.name
