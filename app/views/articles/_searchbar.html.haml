@@ -1,5 +1,5 @@
 .navbar-form.navbar-left
-	= form_tag root_path, :method => 'get', role: 'search' do
+	= form_tag articles_path, :method => 'get', role: 'search' do
 		.input-group
 			= text_field_tag :search, params[:search], placeholder: 'Search...', class: 'form-control'
 			%span.input-group-btn

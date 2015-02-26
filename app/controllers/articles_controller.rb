@@ -3,15 +3,22 @@ class ArticlesController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
 
 	def index
-		if params[:category].blank?
-			if params[:search].blank?
-    		@articles = Article.all.order("created_at DESC")
-    	else
-  			@articles = Article.all.search(params[:search]).order("created_at DESC")
-  		end
-		else
-			@category_id = Category.find_by.(name: params[:category]).id
-			@articles = Article.all.order("created_at DESC")
+		@articles = Article.all.order("created_at DESC")
+		if params[:category].present?
+			begin
+				@category_id = Category.find_by(name: params[:category]).id
+				@articles = Article.where(category_id: @category_id).order("created_at DESC")
+			rescue
+				@notice = params[:category] + " does not exist as a category."
+				@articles = Article.where(category_id: @category_id).order("created_at DESC")
+			end
+		end
+		if params[:search].present?
+			@articles = Article.search(params[:search]).order("created_at DESC")
+		end
+		if params[:category].present? && params[:search].present?
+			@category_id = Category.find_by(name: params[:category]).id
+			@articles = Article.where(category_id: @category_id).search(params[:search]).order("created_at DESC")
 		end
 	end
 
