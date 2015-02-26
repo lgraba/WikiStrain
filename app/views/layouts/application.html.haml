@@ -30,10 +30,10 @@
 		.row
 			.col-md-2
 				%ul.list-group
-					%li.list-group-item{:class => (request.path == root_path ? 'list-group-item-info' : nil)}
-						= link_to "All Strains", root_path
+					%li{:class => (request.path == root_path ? nil : 'no-dot')}
+						= link_to "All Strains", root_path, class: ["list-group-item", (request.path == root_path ? 'list-group-item-info' : nil)]
 					- Category.all.each do |category|
-						%li.list-group-item{:class => (category.name == params[:category] ? 'list-group-item-info' : nil)}
-							=link_to category.name, articles_path(category: category.name)
+						%li{:class => (category.name == params[:category] ? nil : 'no-dot')}
+							=link_to category.name, articles_path(category: category.name), class: ["list-group-item", (category.name == params[:category] ? 'list-group-item-info' : nil)]
 			.col-md-10
 				= yield
