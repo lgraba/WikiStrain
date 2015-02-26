@@ -4,9 +4,10 @@
 	.col-md-3.col-sm-3
 		%h1
 			.btn-group.pull-right{ role: "group" }
-				= link_to "Edit", edit_article_path(@article), class: "btn btn-default"
-				= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
+				- if user_signed_in?
+					= link_to "Edit", edit_article_path(@article), class: "btn btn-default"
+					= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
 
-%p= @article.content
+%p= simple_format(@article.content)
 %p
 	%b= @article.category.name

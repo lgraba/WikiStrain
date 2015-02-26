@@ -4,4 +4,4 @@
 	%p
 		Published on
 		= article.created_at.strftime('%b %d, %Y')
-	%p= truncate(article.content, length: 200)
+	%p= simple_format(truncate(article.content, length: 400))

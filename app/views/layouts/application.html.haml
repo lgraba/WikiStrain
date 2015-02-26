@@ -1,42 +1,42 @@
-!!!!!
+!!! 5
 %html
-%head
-	%title WikiStrain
-	= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
-	= javascript_include_tag 'application', 'data-turbolinks-track' => true
-	= csrf_meta_tags
-%body
-	%nav.navbar.navbar-default.navbar-fixed-top
-		.container-fluid
-			.navbar-header
-				%button.navbar-toggle.collapsed{ :type => "button", :'data-toggle' => "collapse", :'data-target' => "#navigation" }
-					%span.icon-bar
-					%span.icon-bar
-					%span.icon-bar
-				=link_to "WikiStrain", root_path, class: "navbar-brand"
-			.collapse.navbar-collapse#navigation
-				= render '/articles/searchbar'
-				%ul.nav.navbar-nav.navbar-right
-					- if user_signed_in?
-						%li= link_to "Create Article", new_article_path
-						%li= link_to "Sign Out", destroy_user_session_path, :method => :delete
-					- else
-						%li= link_to "Sign In", new_user_session_path
+	%head
+		%title WikiStrain
+		= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+		= javascript_include_tag 'application', 'data-turbolinks-track' => true
+		= csrf_meta_tags
+	%body
+		%nav.navbar.navbar-default.navbar-fixed-top
+			.container-fluid
+				.navbar-header
+					%button.navbar-toggle.collapsed{ :type => "button", :'data-toggle' => "collapse", :'data-target' => "#navigation" }
+						%span.icon-bar
+						%span.icon-bar
+						%span.icon-bar
+					=link_to "WikiStrain", root_path, class: "navbar-brand"
+				.collapse.navbar-collapse#navigation
+					= render '/articles/searchbar'
+					%ul.nav.navbar-nav.navbar-right
+						- if user_signed_in?
+							%li= link_to "Create Article", new_article_path
+							%li= link_to "Sign Out", destroy_user_session_path, :method => :delete
+						- else
+							%li= link_to "Sign In", new_user_session_path
 
-	%p.notice= notice
-	%p.alert= alert
+		%p.notice= notice
+		%p.alert= alert
 
-	.container
-		.row
-			.col-md-2
-				%div.list-group
-					%a.list-group-item{:href => root_path, :class => (request.path == root_path ? 'list-group-item-info' : nil)}
-						All Articles
-						%span.badge.alert-info= Article.count
-					- Category.all.each do |category|
-						%a.list-group-item{:href => articles_path(category: category.name), :class => (category.name == params[:category] ? 'list-group-item-info' : nil)}
-							= category.name
-							- @category_id = Category.find_by(name: category.name).id
-							%span.badge.alert-info= Article.where(category_id: @category_id).count
-			.col-md-10
-				= yield
+		.container
+			.row
+				.col-md-2
+					%div.list-group
+						%a.list-group-item{:href => root_path, :class => (request.path == root_path ? 'list-group-item-info' : nil)}
+							All Articles
+							%span.badge.alert-info= Article.count
+						- Category.all.each do |category|
+							%a.list-group-item{:href => articles_path(category: category.name), :class => (category.name == params[:category] ? 'list-group-item-info' : nil)}
+								= category.name
+								- @category_id = Category.find_by(name: category.name).id
+								%span.badge.alert-info= Article.where(category_id: @category_id).count
+				.col-md-10
+					= yield
