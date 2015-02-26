@@ -29,11 +29,14 @@
 	.container
 		.row
 			.col-md-2
-				%ul.list-group
-					%li{:class => (request.path == root_path ? nil : 'no-dot')}
-						= link_to "All Strains", root_path, class: ["list-group-item", (request.path == root_path ? 'list-group-item-info' : nil)]
+				%div.list-group
+					%a.list-group-item{:href => root_path, :class => (request.path == root_path ? 'list-group-item-info' : nil)}
+						All Articles
+						%span.badge.alert-info= Article.count
 					- Category.all.each do |category|
-						%li{:class => (category.name == params[:category] ? nil : 'no-dot')}
-							=link_to category.name, articles_path(category: category.name), class: ["list-group-item", (category.name == params[:category] ? 'list-group-item-info' : nil)]
+						%a.list-group-item{:href => articles_path(category: category.name), :class => (category.name == params[:category] ? 'list-group-item-info' : nil)}
+							= category.name
+							- @category_id = Category.find_by(name: category.name).id
+							%span.badge.alert-info= Article.where(category_id: @category_id).count
 			.col-md-10
 				= yield
