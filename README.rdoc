@@ -8,7 +8,7 @@ Many thanks to Mackenzie Child for his succinct, accurate, and enjoyable videos 
 Versions: Ruby 2.2.0p0 Rails 4.2.0 MySQL 14.14 Distribution 5.5.41
 
 
-Dependecies:
+Dependencies:
 
 - Use mysql as the database for Active Record: gem 'mysql2'
 
@@ -25,7 +25,7 @@ Successes (independent from tutorial video):
 
 - Increased familiarity with MysQL and RoR.
 
-- Added search box, although there is probably a better way to the conditional selections for params in the controller.
+- Added search box, although there is probably a better way to do the conditional selections for params in the controller.
 
 - Provided logic and formatting for the number of articles in each category on the sidebar.
 
@@ -37,6 +37,8 @@ Successes (independent from tutorial video):
 Things to do:
 
 - *Find out how to write a proper README.rdoc file haha...or should I be using README.md files?
+
+- *Find out how to write proper documentation for RoR applications. One option is Yard.
 
 - *Add validation for category in Article Creation form.
 
