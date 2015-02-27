@@ -1,28 +1,60 @@
-== README
+README for WikiStrain by Logan Graba - February 27, 2015
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Wikipedia-like application based on Mackenzie Child's tutorial: https://www.youtube.com/watch?v=9zNouhuKaVs
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Many thanks to Mackenzie Child for his succinct, accurate, and enjoyable videos on RoR development.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Versions: Ruby 2.2.0p0 Rails 4.2.0 MySQL 14.14 Distribution 5.5.41
+
+
+Dependecies:
+
+Use mysql as the database for Active Record: gem 'mysql2'
+
+HAML: gem 'haml', '~> 4.0.6'
+
+Bootstrap SASS: gem 'bootstrap-sass', '~> 3.3.3'
+
+Devise: gem 'devise', '~> 3.4.1'
+
+Simple_Form: gem 'simple_form', '~> 3.1.0'
+
+
+Successes (independent from tutorial video):
+
+- Increased familiarity with MysQL and RoR.
+
+- Added search box, although there is probably a better way to the conditional selections for params in the controller.
+
+- Provided logic and formatting for the number of articles in each category on the sidebar.
+
+- Increased familiarity with bootstrap (glyphicons, navigational structure, grid structure) and SASS/SCSS.
+
+- Acceptable workflow with integration of Git.
+
+
+Things to do:
+
+- *Find out how to write a proper README.rdoc file haha...or should I be using README.md files?
+
+- *Add validation for category in Article Creation form.
+
+- Allow a user to create a new category - only on Article Creation?
+
+- *Find out why there is not a double-confirmation box for deletion of articles (There is a double-confirmation alert on PinTutorial) - Possible JQuery duplication, see http://stackoverflow.com/questions/16477927/ruby-on-rails-delete-confirmation-pop-up-dialog-displaying-twice.
+
+- Add wysiwyg text editing for content - https://rubygems.org/gems/ckeditor looks good.
+
+- Automatic inclusion of contextual links in one article's content to another article.
+
+- Edit history for each article: edit time, edit changes, edit user - would it make sense to include each iteration of each article?
+
+- Voting change popularity for agreement on changes.
+
+- A visualization tree of article links would be fun.
+
+Note: I need to learn a bit more about RoR before attempting some of these things hahaha. The things I really want to learn about next are asterisked above.
+
+
+Note: This readme is primarily for my own purposes, as development of this application is in initial stages and for my own learning.
